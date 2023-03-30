@@ -1,5 +1,6 @@
 import { formatDate } from '../utils'
 import { createHistory, deleteHistory, getHistoryList } from './history'
+const url = require('../local.json').apiUrl
 
 export interface Contract {
   id: number
@@ -17,14 +18,14 @@ export const getContracts = async (query: { clientId?: number } = {}) => {
   }
 
   const response = await fetch(
-    `http://localhost:8081/contracts${queryString ? '?' + queryString : ''}`
+    `${url}/contracts${queryString ? '?' + queryString : ''}`
   )
   const data = await response.json()
   return data as Contract[]
 }
 
 export const getContract = async (id: number) => {
-  const response = await fetch(`http://localhost:8081/contracts/${id}`)
+  const response = await fetch(`${url}/contracts/${id}`)
   const data = await response.json()
   return data as Contract
 }
@@ -45,7 +46,7 @@ export const createContract = async (
   }
 ) => {
   const payload = newContract
-  const response = await fetch('http://localhost:8081/contracts', {
+  const response = await fetch(`${url}/contracts`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -55,7 +56,7 @@ export const createContract = async (
 }
 
 export const updateContract = async (contract: Contract) => {
-  await fetch(`http://localhost:8081/contracts/${contract.id}`, {
+  await fetch(`${url}/contracts/${contract.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(contract),
@@ -97,5 +98,5 @@ export const updateEmployeeContractHistory = async (
 }
 
 export const deleteContract = async (id: number) => {
-  await fetch(`http://localhost:8081/contracts/${id}`, { method: 'DELETE' })
+  await fetch(`${url}/contracts/${id}`, { method: 'DELETE' })
 }

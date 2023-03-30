@@ -150,7 +150,7 @@ const ContractDetail = (props: ContractDetailProps) => {
             <input name="tech" type="text" value={techStack} readOnly hidden />
             Tech:
             <ul className="mb-2">
-              {techStack.length > 0 &&
+              {/* {techStack.length > 0 &&
                 techStack.map((tech: string, idx: number) => {
                   return (
                     <li key={idx} className="flex flex-row items-center">
@@ -180,7 +180,7 @@ const ContractDetail = (props: ContractDetailProps) => {
                       )}
                     </li>
                   )
-                })}
+                })} */}
             </ul>
             {props.editable && (
               <div>

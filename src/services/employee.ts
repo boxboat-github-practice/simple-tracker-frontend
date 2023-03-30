@@ -1,3 +1,4 @@
+const url = require('../local.json').apiUrl
 export interface Employee {
   name: string
   github?: string
@@ -5,13 +6,13 @@ export interface Employee {
 }
 
 export const getEmployees = async () => {
-  const response = await fetch('http://localhost:8081/employees')
+  const response = await fetch(`${url}/employees`)
   const data = await response.json()
   return data as Employee[]
 }
 
 export const getEmployee = async (id: number) => {
-  const response = await fetch(`http://localhost:8081/employees/${id}`)
+  const response = await fetch(`${url}/employees/${id}`)
   const data = await response.json()
   return data as Employee
 }
@@ -21,7 +22,7 @@ export const createEmployee = async (
   githubUsername: string = 'batman'
 ) => {
   const payload = { name: name, github: githubUsername }
-  const response = await fetch('http://localhost:8081/employees', {
+  const response = await fetch(`${url}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -31,7 +32,7 @@ export const createEmployee = async (
 }
 
 export const updateEmployee = async (employee: Employee) => {
-  await fetch(`http://localhost:8081/employees/${employee.id}`, {
+  await fetch(`${url}/employees/${employee.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(employee),
@@ -39,5 +40,5 @@ export const updateEmployee = async (employee: Employee) => {
 }
 
 export const deleteEmployee = async (id: number) => {
-  await fetch(`http://localhost:8081/employees/${id}`, { method: 'DELETE' })
+  await fetch(`${url}/employees/${id}`, { method: 'DELETE' })
 }

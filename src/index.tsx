@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
-import Root from './routes/Root'
+import Root from './routes/root'
 import ErrorPage from './error-page'
 
-import Employees, { loader as employeeListLoader } from './routes/Employees'
+import Employees, { loader as employeeListLoader } from './routes/employees'
 import EmployeeDetail, {
   loader as employeeLoader,
   action as employeeEditAction,

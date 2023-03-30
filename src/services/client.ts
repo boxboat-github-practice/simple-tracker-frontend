@@ -1,3 +1,4 @@
+const url = require('../local.json').apiUrl
 export interface Client {
   name: string
   url?: string
@@ -5,13 +6,13 @@ export interface Client {
 }
 
 export const getClients = async () => {
-  const response = await fetch('http://localhost:8081/clients')
+  const response = await fetch(`${url}/clients`)
   const data = await response.json()
   return data as Client[]
 }
 
 export const getClient = async (id: number) => {
-  const response = await fetch(`http://localhost:8081/clients/${id}`)
+  const response = await fetch(`${url}/clients/${id}`)
   const data = await response.json()
   return data as Client
 }
@@ -21,7 +22,7 @@ export const createClient = async (
   url?: string
 ) => {
   const payload = { name: name, url: url }
-  const response = await fetch('http://localhost:8081/clients', {
+  const response = await fetch(`${url}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -31,7 +32,7 @@ export const createClient = async (
 }
 
 export const updateClient = async (client: Client) => {
-  await fetch(`http://localhost:8081/clients/${client.id}`, {
+  await fetch(`${url}/clients/${client.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(client),
@@ -39,5 +40,5 @@ export const updateClient = async (client: Client) => {
 }
 
 export const deleteClient = async (id: number) => {
-  await fetch(`http://localhost:8081/clients/${id}`, { method: 'DELETE' })
+  await fetch(`${url}/clients/${id}`, { method: 'DELETE' })
 }

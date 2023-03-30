@@ -8,6 +8,7 @@ export interface History {
   role: string
 }
 
+const url = require('../local.json').apiUrl
 export const getHistoryList = async (
   query: {
     employeeId?: number
@@ -26,14 +27,14 @@ export const getHistoryList = async (
     queryString += `clientId=${query.clientId}&`
   }
   const response = await fetch(
-    `http://localhost:8081/history${queryString ? '?' + queryString : ''}`
+    `${url}/history${queryString ? '?' + queryString : ''}`
   )
   const data = await response.json()
   return data as History[]
 }
 
 export const getHistory = async (id: number) => {
-  const response = await fetch(`http://localhost:8081/history/${id}`)
+  const response = await fetch(`${url}/history/${id}`)
   const data = await response.json()
   return data as History
 }
@@ -45,7 +46,7 @@ export const createHistory = async (newHistory: {
   role: string
 }) => {
   const payload = newHistory
-  const response = await fetch('http://localhost:8081/history', {
+  const response = await fetch(`${url}/history`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -55,7 +56,7 @@ export const createHistory = async (newHistory: {
 }
 
 export const updateHistory = async (history: History) => {
-  await fetch(`http://localhost:8081/history/${history.id}`, {
+  await fetch(`${url}/history/${history.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(history),
@@ -63,5 +64,5 @@ export const updateHistory = async (history: History) => {
 }
 
 export const deleteHistory = async (id: number) => {
-  await fetch(`http://localhost:8081/history/${id}`, { method: 'DELETE' })
+  await fetch(`${url}/history/${id}`, { method: 'DELETE' })
 }
