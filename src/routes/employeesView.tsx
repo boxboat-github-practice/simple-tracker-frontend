@@ -14,7 +14,7 @@ export const action = async () => {
   return redirect(`/employees/${employee.id}/edit`)
 }
 
-const Employees = () => {
+const EmployeesView = () => {
   const employees = useLoaderData() as Employee[]
 
   return (
@@ -62,4 +62,4 @@ const Employees = () => {
   )
 }
 
-export default Employees
+export default EmployeesView

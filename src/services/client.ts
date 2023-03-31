@@ -20,10 +20,10 @@ export const getClient = async (id: number) => {
 
 export const createClient = async (
   name: string = 'Company Name',
-  url?: string
+  clientUrl?: string
 ) => {
   const payload = { name: name, url: url }
-  const response = await fetch(`${url}`, {
+  const response = await fetch(`${url}/clients`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

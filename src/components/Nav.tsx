@@ -9,7 +9,7 @@ const NewNav = () => {
       <ul className="text-sm grid grid-cols-3" id="menu">
         <li>
           <NavLink
-            to="/employees"
+            to="/employeesView"
             className={({ isActive }) =>
               isActive
                 ? 'px-4 flex flex-row justify-center border-b-4 border-teal text-gray-700 font-bold text-lg py-2'
@@ -22,7 +22,7 @@ const NewNav = () => {
         </li>
         <li>
           <NavLink
-            to="/clients"
+            to="/ClientsView"
             className={({ isActive }) =>
               isActive
                 ? 'px-4 flex flex-row justify-center border-b-4 border-teal text-gray-700 font-bold text-lg py-2'
@@ -35,7 +35,7 @@ const NewNav = () => {
         </li>
         <li>
           <NavLink
-            to="/contracts"
+            to="/contractsView"
             className={({ isActive }) =>
               isActive
                 ? 'px-4 flex flex-row justify-center border-b-4 border-teal text-gray-700 font-bold text-lg py-2'

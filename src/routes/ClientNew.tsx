@@ -7,7 +7,7 @@ export async function action({ request }: any) {
   const formData = await request.formData()
   const updates = Object.fromEntries(formData) as { name: string; url: string }
   await createClient(updates.name, updates.url)
-  return redirect(`/clients`)
+  return redirect(`/clientsView`)
 }
 
 const ClientNew = () => {

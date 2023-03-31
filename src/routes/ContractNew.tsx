@@ -33,7 +33,7 @@ export async function action({ request }: any) {
     parseInt(updates.clientId),
     contract.id
   )
-  return redirect(`/contracts`)
+  return redirect(`/contractsView`)
 }
 
 const ContractNew = () => {

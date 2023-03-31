@@ -7,7 +7,7 @@ export async function action({ request }: any) {
   const formData = await request.formData()
   const updates = Object.fromEntries(formData)
   await createEmployee(updates.name, updates.github)
-  return redirect(`/employees`)
+  return redirect(`/employeesView`)
 }
 
 const EmployeeNew = () => {

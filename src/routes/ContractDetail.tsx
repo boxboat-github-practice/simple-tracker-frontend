@@ -44,7 +44,7 @@ export async function action({ request, params }: any) {
     parseInt(updates.clientId),
     parseInt(params.contractId)
   )
-  return redirect(`/contracts`)
+  return redirect(`/contractsView`)
 }
 
 interface ContractDetailProps {

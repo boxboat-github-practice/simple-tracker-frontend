@@ -15,7 +15,7 @@ export async function action({ request, params }: any) {
   const formData = await request.formData()
   const updates = Object.fromEntries(formData) as Employee
   await updateEmployee({ ...updates, id: params.employeeId })
-  return redirect(`/employees`)
+  return redirect(`/employeesView`)
 }
 
 interface EmployeeDetailProps {

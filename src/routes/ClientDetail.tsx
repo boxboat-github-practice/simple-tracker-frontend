@@ -21,7 +21,7 @@ export async function action({ request, params }: any) {
   const formData = await request.formData()
   const updates = Object.fromEntries(formData) as Client
   await updateClient({ ...updates, id: params.clientId })
-  return redirect(`/clients`)
+  return redirect(`/clientsView`)
 }
 
 interface ClientDetailProps {
@@ -87,7 +87,7 @@ const ClientDetail = (props: ClientDetailProps) => {
                   {contract.type} &mdash; ({contract.startDate}&ndash;
                   {contract.endDate})&nbsp;
                   <Link
-                    to={`/contracts/${contract.id}`}
+                    to={`/contractsView/${contract.id}`}
                     className="underline text-blue-300"
                   >
                     View Contract

@@ -5,7 +5,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Root from './routes/root'
 import ErrorPage from './error-page'
 
-import Employees, { loader as employeeListLoader } from './routes/employees'
+import Employees, { loader as employeeListLoader } from './routes/employeesView'
 import EmployeeDetail, {
   loader as employeeLoader,
   action as employeeEditAction,
@@ -15,7 +15,7 @@ import EmployeeNew, {
 } from './routes/EmployeeNew'
 import { action as employeeDeleteAction } from './routes/EmployeeDestroy'
 
-import Clients, { loader as clientListLoader } from './routes/Clients'
+import Clients, { loader as clientListLoader } from './routes/ClientsView'
 import ClientDetail, {
   loader as clientLoader,
   action as clientEditAction,
@@ -23,7 +23,7 @@ import ClientDetail, {
 import ClientNew, { action as clientCreateAction } from './routes/ClientNew'
 import { action as clientDeleteAction } from './routes/ClientDestroy'
 
-import Contracts, { loader as contractListLoader } from './routes/Contracts'
+import Contracts, { loader as contractListLoader } from './routes/ContractsView'
 import ContractNew, {
   loader as contractNewLoader,
   action as contractCreateAction,
@@ -45,10 +45,10 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/',
-            element: <Navigate to="employees" />,
+            element: <Navigate to="employeesView" />,
           },
           {
-            path: 'employees',
+            path: 'employeesView',
             element: <Employees />,
             loader: employeeListLoader,
             children: [
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: 'clients',
+            path: 'ClientsView',
             element: <Clients />,
             loader: clientListLoader,
             children: [
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: 'contracts',
+            path: 'contractsView',
             element: <Contracts />,
             loader: contractListLoader,
             id: 'contracts',

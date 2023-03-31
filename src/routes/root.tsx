@@ -1,6 +1,5 @@
 import logo from '../assets/bb-logo.png'
 import { Outlet, useNavigation } from 'react-router-dom'
-import ColorPalette from '../components/ColorPalette'
 
 const Root = () => {
   const navigation = useNavigation()
