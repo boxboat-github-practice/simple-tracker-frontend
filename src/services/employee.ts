@@ -1,5 +1,5 @@
 const url = require('../local.json').apiUrl
-// const url = process.env.API_URL
+
 console.log(process.env)
 export interface Employee {
   name: string

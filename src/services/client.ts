@@ -1,5 +1,5 @@
 const url = require('../local.json').apiUrl
-// const url = process.env.API_URL
+
 export interface Client {
   name: string
   url?: string
@@ -33,14 +33,14 @@ export const createClient = async (
 }
 
 export const updateClient = async (client: Client) => {
-  let reqBody = {
+  const payload = {
     name: client.name,
     url: client.url
   }
   await fetch(`${url}/clients/${client.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(reqBody),
+    body: JSON.stringify(payload),
   })
 }
 
