@@ -16,13 +16,13 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: ghcr.io/boxboat-github-practice/simple-tracker-frontend:20230331.6
+      - image: ghcr.io/boxboat-github-practice/simple-tracker-frontend:20230331.8
         name: simple-tracker-frontend
         resources: {}
         volumeMounts:
         - name: config
-          mountPath: "/app/src/locals.json"
-          subPath: locals.json
+          mountPath: "/app/src/local.json"
+          subPath: local.json
       volumes: 
       - name: config
         configMap:
