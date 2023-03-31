@@ -22,7 +22,7 @@ export const createClient = async (
   name: string = 'Company Name',
   clientUrl?: string
 ) => {
-  const payload = { name: name, url: url }
+  const payload = { name: name, url: clientUrl }
   const response = await fetch(`${url}/clients`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -33,10 +33,14 @@ export const createClient = async (
 }
 
 export const updateClient = async (client: Client) => {
+  let reqBody = {
+    name: client.name,
+    url: client.url
+  }
   await fetch(`${url}/clients/${client.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(client),
+    body: JSON.stringify(reqBody),
   })
 }
 

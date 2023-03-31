@@ -64,7 +64,7 @@ const ClientDetail = (props: ClientDetailProps) => {
               <label htmlFor="id">URL:</label>
               <input
                 type="text"
-                name="github"
+                name="url"
                 defaultValue={client.url ? client.url : ''}
                 className={`${
                   props.editable ? classesWhenEditable : ''
