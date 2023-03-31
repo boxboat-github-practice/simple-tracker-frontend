@@ -8,7 +8,8 @@ export interface History {
   role: string
 }
 
-const url = require('../local.json').apiUrl
+// const url = require('../local.json').apiUrl
+const url = process.env.API_URL
 export const getHistoryList = async (
   query: {
     employeeId?: number

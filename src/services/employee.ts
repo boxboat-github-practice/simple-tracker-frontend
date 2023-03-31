@@ -1,4 +1,5 @@
-const url = require('../local.json').apiUrl
+// const url = require('../local.json').apiUrl
+const url = process.env.API_URL
 export interface Employee {
   name: string
   github?: string
@@ -22,7 +23,7 @@ export const createEmployee = async (
   githubUsername: string = 'batman'
 ) => {
   const payload = { name: name, github: githubUsername }
-  const response = await fetch(`${url}`, {
+  const response = await fetch(`${url}/employees`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
