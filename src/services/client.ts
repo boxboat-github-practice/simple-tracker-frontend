@@ -33,10 +33,7 @@ export const createClient = async (
 }
 
 export const updateClient = async (client: Client) => {
-  const payload = {
-    name: client.name,
-    url: client.url
-  }
+  const payload = { name: client.name, url: client.url }
   await fetch(`${url}/clients/${client.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
