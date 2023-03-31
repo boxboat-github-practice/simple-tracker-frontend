@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: ghcr.io/boxboat-github-practice/simple-tracker-frontend:20230331.4
+        name: simple-tracker-frontend
+        resources: {}
+        volumeMounts:
+        - name: config
+          mountPath: "/app/src/locals.json"
+          subPath: data
+          readOnly: true
+      volumes: 
+      - name: config
+        secret:
+          configMap:
+            name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: default
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: frontend
+  type: ClusterIP

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+locals.json: |
+  {
+  "apiUrl": "http://20.102.36.143:80/api",
+  "url": "http://localhost:8080"
+  }
+
+  
