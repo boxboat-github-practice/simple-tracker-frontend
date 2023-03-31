@@ -1,4 +1,4 @@
 {
-  "apiUrl": "http://localhost:8081",
+  "apiUrl": "http://20.102.36.143:80/api",
   "url": "http://localhost:8080"
 }

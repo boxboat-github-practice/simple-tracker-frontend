@@ -1,5 +1,6 @@
-// const url = require('../local.json').apiUrl
-const url = process.env.API_URL
+const url = require('../local.json').apiUrl
+// const url = process.env.API_URL
+console.log(process.env)
 export interface Employee {
   name: string
   github?: string
@@ -7,6 +8,7 @@ export interface Employee {
 }
 
 export const getEmployees = async () => {
+  console.log(`${url}`)
   const response = await fetch(`${url}/employees`)
   const data = await response.json()
   return data as Employee[]

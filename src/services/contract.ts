@@ -1,7 +1,7 @@
 import { formatDate } from '../utils'
 import { createHistory, deleteHistory, getHistoryList } from './history'
-// const url = require('../local.json').apiUrl
-const url = process.env.API_URL
+const url = require('../local.json').apiUrl
+// const url = process.env.API_URL
 
 export interface Contract {
   id: number
