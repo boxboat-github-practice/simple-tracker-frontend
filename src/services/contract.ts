@@ -56,10 +56,17 @@ export const createContract = async (
 }
 
 export const updateContract = async (contract: Contract) => {
+  let payload = {
+    clientId: contract.clientId,
+    type: contract.type,
+    startDate: contract.startDate,
+    endDate: contract.endDate,
+    tech: contract.tech,
+  }
   await fetch(`${url}/contracts/${contract.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(contract),
+    body: JSON.stringify(payload),
   })
 }
 

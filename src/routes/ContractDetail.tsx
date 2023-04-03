@@ -19,6 +19,7 @@ import { ReactComponent as MinusIcon } from '../assets/heroIcons/minus-circle.sv
 import { getHistoryList, History } from '../services/history'
 import { Link } from 'react-router-dom'
 import { getEmployees, Employee } from '../services/employee'
+import { getContract } from '../services/contract'
 
 export const loader = async ({ params }: any) => {
   const contractHistoryList = await getHistoryList({
@@ -31,12 +32,14 @@ export const loader = async ({ params }: any) => {
 export async function action({ request, params }: any) {
   const formData = await request.formData()
   const updates = Object.fromEntries(formData) as any
+
   await updateContract({
     ...updates,
     clientId: parseInt(updates.clientId),
     id: parseInt(params.contractId),
     tech: updates.tech.split(','),
   })
+
   await updateEmployeeContractHistory(
     updates.employees.length > 0
       ? updates.employees.split(',').map((emp: string) => parseInt(emp))
@@ -150,7 +153,7 @@ const ContractDetail = (props: ContractDetailProps) => {
             <input name="tech" type="text" value={techStack} readOnly hidden />
             Tech:
             <ul className="mb-2">
-              {/* {techStack.length > 0 &&
+              {techStack &&
                 techStack.map((tech: string, idx: number) => {
                   return (
                     <li key={idx} className="flex flex-row items-center">
@@ -180,7 +183,7 @@ const ContractDetail = (props: ContractDetailProps) => {
                       )}
                     </li>
                   )
-                })} */}
+                })}
             </ul>
             {props.editable && (
               <div>
@@ -251,7 +254,7 @@ const ContractDetail = (props: ContractDetailProps) => {
             {props.editable && (
               <a
                 onClick={() => {
-                  contractedEmployees.push({ employeeId: 0, employeeName: '' })
+                  contractedEmployees.push({ employeeId: allEmployees[0].id, employeeName: '' })
                   setContractedEmployees([...contractedEmployees])
                 }}
                 className="rounded-full bg-gray-500 px-5 cursor-pointer m-3"
