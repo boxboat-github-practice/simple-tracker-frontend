@@ -26,10 +26,10 @@ const ClientNew = () => {
               className={`rounded-md shadow-sm border mx-2 px-2 py-2 text-sm`}
             />
             <div className="my-2">
-              <label htmlFor="id">URL:</label>
+              <label htmlFor="url">URL:</label>
               <input
                 type="text"
-                name="github"
+                name="url"
                 defaultValue=""
                 className={`rounded-md shadow-sm border mx-2 px-2 py-2 text-sm`}
               />

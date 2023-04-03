@@ -26,9 +26,9 @@ export async function action({ request }: any) {
     clientId: parseInt(updates.clientId),
     tech: updates.tech.split(','),
   })
+
   await updateEmployeeContractHistory(
-    updates.employees.length > 0
-      ? updates.employees.split(',').map((emp: string) => parseInt(emp))
+    updates.employees ? updates.employees.split(',').map((emp: string) => parseInt(emp))
       : new Array<number>(),
     parseInt(updates.clientId),
     contract.id
@@ -189,7 +189,7 @@ const ContractNew = () => {
             </ul>
             <a
               onClick={() => {
-                contractedEmployees.push({ employeeId: 0, employeeName: '' })
+                contractedEmployees.push({ employeeId: allEmployees[0].id, employeeName: '' })
                 setContractedEmployees([...contractedEmployees])
               }}
               className="rounded-full bg-gray-500 px-5 cursor-pointer m-3"
