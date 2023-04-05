@@ -24,7 +24,14 @@ const EmployeesView = () => {
           return (
             <Row key={employee.id} objectId={employee.id}>
               <div className="flex flex-row items-center">
-                <UserIcon className="w-14 h-14" />
+                {employee.github ?
+                  <img 
+                    src={`https://github.com/${employee.github}.png`}
+                    className="w-14 h-14"
+                  ></img>
+                  :
+                  <UserIcon className="w-14 h-14" />
+                }
                 <div className="ml-2">
                   <p className="text-xl tracking-wide text-gray-900">
                     {employee.name}
