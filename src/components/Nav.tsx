@@ -22,7 +22,7 @@ const NewNav = () => {
         </li>
         <li>
           <NavLink
-            to="/ClientsView"
+            to="/clientsView"
             className={({ isActive }) =>
               isActive
                 ? 'px-4 flex flex-row justify-center border-b-4 border-teal text-gray-700 font-bold text-lg py-2'

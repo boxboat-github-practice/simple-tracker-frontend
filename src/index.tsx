@@ -5,7 +5,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Root from './routes/root'
 import ErrorPage from './error-page'
 
-import Employees, { loader as employeeListLoader } from './routes/employeesView'
+import Employees, { loader as employeeListLoader } from './routes/EmployeesView'
 import EmployeeDetail, {
   loader as employeeLoader,
   action as employeeEditAction,
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/',
-            element: <Navigate to="employeesView" />,
+            element: <Navigate to="EmployeesView" />,
           },
           {
             path: 'employeesView',
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: 'ClientsView',
+            path: 'clientsView',
             element: <Clients />,
             loader: clientListLoader,
             children: [
