@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-tracker-frontend
+  annotations:
+    github.com/project-slug: boxboat-backstage/simple-tracker-frontend
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - typescript
+    - react
+    - web-client
+spec:
+  type: frontend
+  system: simple-tracker
+  owner: group:fishdank
+  lifecycle: production
+  consumesApis:
+    - simple-tracker-api
